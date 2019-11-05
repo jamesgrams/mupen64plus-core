@@ -635,7 +635,7 @@ void event_sdl_keydown(int keysym, int keymod)
         main_speeddown(5);
     else if (keysym == sdl_keysym2native(ConfigGetParamInt(l_CoreEventsConfig, kbdSpeedup)))
         main_speedup(5);
-    else if (keysym == sdl_keysym2native(ConfigGetParamInt(l_CoreEventsConfig, kbdScreenshot)))
+    else if (keysym == sdl_keysym2native(ConfigGetParamInt(l_CoreEventsConfig, kbdScreenshot)) && ( ( keymod & KMOD_CTRL ) || keysym != SDL_SCANCODE_S ) )
         main_take_next_screenshot();    /* screenshot will be taken at the end of frame rendering */
     else if (keysym == sdl_keysym2native(ConfigGetParamInt(l_CoreEventsConfig, kbdPause)))
         main_toggle_pause();
